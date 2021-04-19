@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/Spring/ZhengHe_spring_mybatis/README.md" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Spring/ZhengHe_spring_mybatis/src/main/java/com/T_Lyon/mapper/UserMapper.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Spring/ZhengHe_spring_mybatis/src/main/java/com/T_Lyon/mapper/UserMapperImpl.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Spring/ZhengHe_spring_mybatis/src/main/java/com/T_Lyon/pojo/User.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Spring/ZhengHe_spring_mybatis/src/main/resources/spring-dao.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Spring/ZhengHe_spring_mybatis/src/test/java/SMTest.java" charset="UTF-8" />
+  </component>
+</project>
