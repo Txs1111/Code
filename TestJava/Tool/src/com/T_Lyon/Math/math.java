@@ -19,6 +19,8 @@ public class math {
 //        int round(float a); 四舍五入返回整数
         long round = Math.round(4.3);
 //        double random() 返回带正号的double值，该值大于等于0.0且小于1.0![](随机数)
-        double random = Math.random();
+        for (int i = 0; i < 10; i++) {
+            System.out.println(Math.random());
+        }
     }
 }
