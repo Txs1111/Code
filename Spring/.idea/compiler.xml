@@ -10,5 +10,10 @@
         <module name="ZhengHe_spring_mybatis" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Spring" target="1.5" />
+      <module name="Spring (1)" target="1.5" />
+      <module name="ZhengHe_spring_mybatis" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>
