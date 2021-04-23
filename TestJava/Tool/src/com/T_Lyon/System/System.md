@@ -1,18 +1,18 @@
-SystemÀà
-³ÉÔ±±äÁ¿
-SystemÀàÄÚ²¿°üº¬in¡¢outºÍerrÈý¸ö³ÉÔ±±äÁ¿£¬·Ö±ð´ú±í±ê×¼ÊäÈëÁ÷(¼üÅÌÊäÈë)£¬±ê×¼Êä³öÁ÷(ÏÔÊ¾Æ÷)ºÍ±ê×¼´íÎóÊä³öÁ÷(ÏÔÊ¾Æ÷)¡£
-³ÉÔ±·½·¨
+Systemç±»
+æˆå‘˜å˜é‡
+Systemç±»å†…éƒ¨åŒ…å«inã€outå’Œerrä¸‰ä¸ªæˆå‘˜å˜é‡ï¼Œåˆ†åˆ«ä»£è¡¨æ ‡å‡†è¾“å…¥æµ(é”®ç›˜è¾“å…¥)ï¼Œæ ‡å‡†è¾“å‡ºæµ(æ˜¾ç¤ºå™¨)å’Œæ ‡å‡†é”™è¯¯è¾“å‡ºæµ(æ˜¾ç¤ºå™¨)ã€‚
+æˆå‘˜æ–¹æ³•
 public static void arraycopy(Object src, int srcPos, Object dest, int destPos, int length)
 int[] a = {1,2,3,4};
 int[] b = new int[5];
 System.arraycopy(a,1,b,3,2);
-exit()·½·¨
+exit()æ–¹æ³•
 public static void exit(int status)
-¸Ã·½·¨µÄ×÷ÓÃÊÇÍË³ö³ÌÐò¡£ÆäÖÐstatusµÄÖµÎª0´ú±íÕý³£ÍË³ö£¬·ÇÁã´ú±íÒì³£ÍË³ö¡£Ê¹ÓÃ¸Ã·½·¨¿ÉÒÔÔÚÍ¼ÐÎ½çÃæ±à³ÌÖÐÊµÏÖ³ÌÐòµÄÍË³ö¹¦ÄÜµÈ¡£
-gc()·½·¨
+è¯¥æ–¹æ³•çš„ä½œç”¨æ˜¯é€€å‡ºç¨‹åºã€‚å…¶ä¸­statusçš„å€¼ä¸º0ä»£è¡¨æ­£å¸¸é€€å‡ºï¼Œéžé›¶ä»£è¡¨å¼‚å¸¸é€€å‡ºã€‚ä½¿ç”¨è¯¥æ–¹æ³•å¯ä»¥åœ¨å›¾å½¢ç•Œé¢ç¼–ç¨‹ä¸­å®žçŽ°ç¨‹åºçš„é€€å‡ºåŠŸèƒ½ç­‰ã€‚
+gc()æ–¹æ³•
 public static void gc()
-¸Ã·½·¨µÄ×÷ÓÃÊÇÇëÇóÏµÍ³½øÐÐÀ¬»ø»ØÊÕ¡£ÖÁÓÚÏµÍ³ÊÇ·ñÁ¢¿Ì»ØÊÕ£¬ÔòÈ¡¾öÓÚÏµÍ³ÖÐÀ¬»ø»ØÊÕËã·¨µÄÊµÏÖÒÔ¼°ÏµÍ³Ö´ÐÐÊ±µÄÇé¿ö¡£
-À¬»ø»ØÊÕÊ±£¬»áÏÈµ÷ÓÃfinalize()·½·¨£¬ÊÍ·Å·Çjava×ÊÔ´
-currentTimeMillis·½·¨
+è¯¥æ–¹æ³•çš„ä½œç”¨æ˜¯è¯·æ±‚ç³»ç»Ÿè¿›è¡Œåžƒåœ¾å›žæ”¶ã€‚è‡³äºŽç³»ç»Ÿæ˜¯å¦ç«‹åˆ»å›žæ”¶ï¼Œåˆ™å–å†³äºŽç³»ç»Ÿä¸­åžƒåœ¾å›žæ”¶ç®—æ³•çš„å®žçŽ°ä»¥åŠç³»ç»Ÿæ‰§è¡Œæ—¶çš„æƒ…å†µã€‚
+åžƒåœ¾å›žæ”¶æ—¶ï¼Œä¼šå…ˆè°ƒç”¨finalize()æ–¹æ³•ï¼Œé‡Šæ”¾éžjavaèµ„æº
+currentTimeMillisæ–¹æ³•
 public static long currentTimeMillis()
-ÒÔºÁÃëÎªµ¥Î»·µ»Ø´Ó1970Äê1ÔÂ1ÈÕÎçÒ¹µ½µ±Ç°Ê±¼äµÄºÁÃëÊý
+ä»¥æ¯«ç§’ä¸ºå•ä½è¿”å›žä»Ž1970å¹´1æœˆ1æ—¥åˆå¤œåˆ°å½“å‰æ—¶é—´çš„æ¯«ç§’æ•°

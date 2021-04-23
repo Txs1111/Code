@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/com/T_Lyon/Math/Math.md" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/com/T_Lyon/Math/math.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/T_Lyon/Random/Random.md" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/T_Lyon/Random/random.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/T_Lyon/Rumtime/Rumtime.md" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/T_Lyon/System/System.md" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/T_Lyon/System/system.java" charset="UTF-8" />
   </component>
 </project>

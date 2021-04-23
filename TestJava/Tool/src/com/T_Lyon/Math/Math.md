@@ -1,15 +1,15 @@
-Ò».MathÀà
-Math ÀàÌá¹©ÁËÒ»ĞòÁĞ»ù±¾ÊıÑ§ÔËËãºÍ¼¸ºÎº¯ÊıµÄ·½·¨¡£
-MathÀàÊÇfinalÀà£¬²¢ÇÒËüµÄËùÓĞ³ÉÔ±±äÁ¿ºÍ³ÉÔ±·½·¨**¶¼ÊÇ¾²Ì¬**µÄ¡£
-MathÀàµÄ³£ÓÃÊôĞÔºÍ·½·¨£º
-¾²Ì¬³£Á¿£­£­PI £ºÔ²ÖÜÂÊµÄdoubleÖµ
-¾²Ì¬·½·¨£º
-double pow (double a, double b) ¼ÆËã a µÄ b ´Î·½
-double sqrt  (double a)     ¼ÆËã¸ø¶¨ÖµµÄÆ½·½¸ù
-int abs (int a)     ¼ÆËã int ÀàĞÍÖµ aµÄ¾ø¶ÔÖµ£¬Ò²½ÓÊÕ long¡¢float ºÍ double ÀàĞÍµÄ²ÎÊı
-double ceil (double a)  ·µ»Ø´óÓÚµÈÓÚ aµÄ×îĞ¡ÕûÊıµÄdoubleÖµ
-double floor (double a)     ·µ»ØĞ¡ÓÚµÈÓÚ aµÄ×î´óÕûÊıµÄdoubleÖµ
-int max(int a, int b)   ·µ»Ø int ĞÍÖµ a ºÍ b ÖĞµÄ½Ï´óÖµ£¬Ò²½ÓÊÕ long¡¢float ºÍ double ÀàĞÍµÄ²ÎÊı
-int min(int a, int b)   ·µ»Ø a ºÍ b ÖĞµÄ½ÏĞ¡Öµ£¬Ò²¿É½ÓÊÕ long¡¢float ºÍ double ÀàĞÍµÄ²ÎÊı
-int round(float a); ËÄÉáÎåÈë·µ»ØÕûÊı
-double random() ·µ»Ø´øÕıºÅµÄdoubleÖµ£¬¸ÃÖµ´óÓÚµÈÓÚ0.0ÇÒĞ¡ÓÚ1.0![]
+ä¸€.Mathç±»
+Math ç±»æä¾›äº†ä¸€åºåˆ—åŸºæœ¬æ•°å­¦è¿ç®—å’Œå‡ ä½•å‡½æ•°çš„æ–¹æ³•ã€‚
+Mathç±»æ˜¯finalç±»ï¼Œå¹¶ä¸”å®ƒçš„æ‰€æœ‰æˆå‘˜å˜é‡å’Œæˆå‘˜æ–¹æ³•**éƒ½æ˜¯é™æ€**çš„ã€‚
+Mathç±»çš„å¸¸ç”¨å±æ€§å’Œæ–¹æ³•ï¼š
+é™æ€å¸¸é‡ï¼ï¼PI ï¼šåœ†å‘¨ç‡çš„doubleå€¼
+é™æ€æ–¹æ³•ï¼š
+double pow (double a, double b) è®¡ç®— a çš„ b æ¬¡æ–¹
+double sqrt  (double a)     è®¡ç®—ç»™å®šå€¼çš„å¹³æ–¹æ ¹
+int abs (int a)     è®¡ç®— int ç±»å‹å€¼ açš„ç»å¯¹å€¼ï¼Œä¹Ÿæ¥æ”¶ longã€float å’Œ double ç±»å‹çš„å‚æ•°
+double ceil (double a)  è¿”å›å¤§äºç­‰äº açš„æœ€å°æ•´æ•°çš„doubleå€¼
+double floor (double a)     è¿”å›å°äºç­‰äº açš„æœ€å¤§æ•´æ•°çš„doubleå€¼
+int max(int a, int b)   è¿”å› int å‹å€¼ a å’Œ b ä¸­çš„è¾ƒå¤§å€¼ï¼Œä¹Ÿæ¥æ”¶ longã€float å’Œ double ç±»å‹çš„å‚æ•°
+int min(int a, int b)   è¿”å› a å’Œ b ä¸­çš„è¾ƒå°å€¼ï¼Œä¹Ÿå¯æ¥æ”¶ longã€float å’Œ double ç±»å‹çš„å‚æ•°
+int round(float a); å››èˆäº”å…¥è¿”å›æ•´æ•°
+double random() è¿”å›å¸¦æ­£å·çš„doubleå€¼ï¼Œè¯¥å€¼å¤§äºç­‰äº0.0ä¸”å°äº1.0![]
