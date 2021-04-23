@@ -8,7 +8,7 @@ public class runtime {
     @Test
     public void Demo1() {
         Runtime runtime = Runtime.getRuntime();
-//        ÔÚµ¥¶ÀµÄ½ø³ÌÖĞÖ´ĞĞÖ¸¶¨µÄ×Ö·û´®ÃüÁî
+//        åœ¨å•ç‹¬çš„è¿›ç¨‹ä¸­æ‰§è¡ŒæŒ‡å®šçš„å­—ç¬¦ä¸²å‘½ä»¤
         String s = "";
         try {
             Process exec = runtime.exec(s);

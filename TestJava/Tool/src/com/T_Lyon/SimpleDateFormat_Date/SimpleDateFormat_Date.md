@@ -1,10 +1,9 @@
-Îå.DateÀàÓëSimpleDateFormatÀà
-DateÀà£º±íÊ¾ÈÕÆÚºÍÊ±¼ä
-Ìá¹©²Ù×÷ÈÕÆÚºÍÊ±¼ä¸÷×é³É²¿·ÖµÄ·½·¨
-SimpleDateFormatÀà
-ÓÃÓÚ¶¨ÖÆÈÕÆÚÊ±¼äµÄ¸ñÊ½
-Date date = new Date();    //´´½¨ÈÕÆÚ¶ÔÏó  
-SimpleDateFormat sdf= new SimpleDateFormat("yyyy-  
-MM-dd HH:mm:ss");//¶¨ÖÆÈÕÆÚ¸ñÊ½
+äº”.Dateç±»ä¸SimpleDateFormatç±»
+Dateç±»ï¼šè¡¨ç¤ºæ—¥æœŸå’Œæ—¶é—´
+æä¾›æ“ä½œæ—¥æœŸå’Œæ—¶é—´å„ç»„æˆéƒ¨åˆ†çš„æ–¹æ³•
+SimpleDateFormatç±»
+ç”¨äºå®šåˆ¶æ—¥æœŸæ—¶é—´çš„æ ¼å¼
+Date date = new Date();    //åˆ›å»ºæ—¥æœŸå¯¹è±¡  
+SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//å®šåˆ¶æ—¥æœŸæ ¼å¼
 String now = sdf.format(date);
 System.out.println(now);
