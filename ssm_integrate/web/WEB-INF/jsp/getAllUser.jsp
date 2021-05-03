@@ -1,16 +1,16 @@
 <%--
   Created by IntelliJ IDEA.
   User: Lyon
-  Date: 2021-4-30
-  Time: 下午 02:12
+  Date: 2021-5-3
+  Time: 上午 09:33
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  $END$
-  </body>
+<head>
+    <title>获取所有用户</title>
+</head>
+<body>
+${username}
+</body>
 </html>

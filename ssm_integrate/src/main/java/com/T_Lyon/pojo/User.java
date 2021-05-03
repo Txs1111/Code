@@ -8,7 +8,7 @@ import lombok.*;
 public class User {
 private String username;
 private String password;
-private Data login_time;
+private String login_time;
 private String grade;
 private String role;
 }

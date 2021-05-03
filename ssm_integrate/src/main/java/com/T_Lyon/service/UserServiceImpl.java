@@ -12,18 +12,18 @@ public class UserServiceImpl implements UserService {
         this.userMapper = userMapper;
     }
 
-//
-//    public int addUser(User user) {
-//        return userMapper.addUser(user);
-//    }
-//
-//    public int deleteUser(int id) {
-//        return userMapper.deleteUser(id);
-//    }
-//
-//    public int updateUser(User user) {
-//        return userMapper.updateUser(user);
-//    }
+
+    public int addUser(User user) {
+        return userMapper.addUser(user);
+    }
+
+    public int deleteUser(int id) {
+        return userMapper.deleteUser(id);
+    }
+
+    public int updateUser(User user) {
+        return userMapper.updateUser(user);
+    }
 
     public User getUserByName(String username) {
         return userMapper.getUserByName(username);
