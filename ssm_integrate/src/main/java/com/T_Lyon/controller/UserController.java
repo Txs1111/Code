@@ -21,4 +21,12 @@ public class UserController {
         Model username = model.addAttribute("username", userByName);
         return "getAllUser";
     }
+
+    @RequestMapping("/login")
+    public String login(Model model, String username) {
+        User users = userService.getUserByName(username);
+        Model model1 = model.addAttribute("User", "users");
+        return "forward:/index.jsp";
+    }
+
 }

@@ -11,6 +11,6 @@
     <title>获取所有用户</title>
 </head>
 <body>
-${username}
+${username.login_time}
 </body>
 </html>
