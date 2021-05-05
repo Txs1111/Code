@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class UserController {
+public class LoginController {
 
     @Autowired
     @Qualifier("UserServiceImpl")
@@ -25,7 +25,7 @@ public class UserController {
 
     @RequestMapping("/verify")
     @ResponseBody
-    public String login(String username, String pwd) {
+    public String verify(String username, String pwd) {
         String Info = "";
         User users = userService.getUserByName(username);
         System.out.println(users);
@@ -38,7 +38,25 @@ public class UserController {
             Info = "err";
         }
         return Info;
-
     }
 
+    @RequestMapping("/login")
+    public String login(Model model, String username, String pwd) {
+        User userByName = userService.getUserByName(username);
+        System.out.println("userByName:" + userByName);
+
+        if (userByName != null) {
+            if (pwd.equals(userByName.getPassword())) {
+                System.out.println("pwd.equals(userByName.getPassword())" + pwd.equals(userByName.getPassword()));
+                Model user = model.addAttribute("user", userByName);
+                return "home";
+            } else {
+                Model user = null;
+                return "redirect:/index.jsp";
+            }
+        } else {
+            Model user = null;
+            return "redirect:/index.jsp";
+        }
+    }
 }
