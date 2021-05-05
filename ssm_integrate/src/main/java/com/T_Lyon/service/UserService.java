@@ -4,19 +4,19 @@ import com.T_Lyon.pojo.User;
 import org.apache.ibatis.annotations.*;
 
 public interface UserService {
-    //    Ôö¼ÓÒ»¸öÓÃ»§
+    //    å¢åŠ ä¸€ä¸ªç”¨æˆ·
     public int addUser(User user);
 
-    //    É¾³ıÒ»¸öÓÃ»§
+    //    åˆ é™¤ä¸€ä¸ªç”¨æˆ·
     public int deleteUser(@Param("id") int id);
 
-    //    ¸üĞÂÒ»¸öÓÃ»§
+    //    æ›´æ–°ä¸€ä¸ªç”¨æˆ·
     public int updateUser(User user);
 
-    //    ²éÑ¯Ò»¸öÓÃ»§
+    //    æŸ¥è¯¢ä¸€ä¸ªç”¨æˆ·
     public User getUserByName(@Param("username") String username);
 
-    //    ²éÑ¯ËùÓĞÓÃ»§
+    //    æŸ¥è¯¢æ‰€æœ‰ç”¨æˆ·
     public User getUsers();
 
 }

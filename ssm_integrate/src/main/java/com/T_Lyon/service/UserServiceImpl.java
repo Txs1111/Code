@@ -8,32 +8,32 @@ public class UserServiceImpl implements UserService {
 
     private UserMapper userMapper;
 
-    //    set×¢Èë
+    //    setæ³¨å…¥
     public void setUserMapper(UserMapper userMapper) {
         this.userMapper = userMapper;
     }
 
-    //    Ôö¼ÓÒ»¸öÓÃ»§
+    //    å¢åŠ ä¸€ä¸ªç”¨æˆ·
     public int addUser(User user) {
         return userMapper.addUser(user);
     }
 
-    //    É¾³ıÒ»¸öÓÃ»§
+    //    åˆ é™¤ä¸€ä¸ªç”¨æˆ·
     public int deleteUser(int id) {
         return userMapper.deleteUser(id);
     }
 
-    //    ¸üĞÂÒ»¸öÓÃ»§
+    //    æ›´æ–°ä¸€ä¸ªç”¨æˆ·
     public int updateUser(User user) {
         return userMapper.updateUser(user);
     }
 
-    //    ²éÑ¯Ò»¸öÓÃ»§
+    //    æŸ¥è¯¢ä¸€ä¸ªç”¨æˆ·
     public User getUserByName(String username) {
         return userMapper.getUserByName(username);
     }
 
-    //    ²éÑ¯ËùÓĞÓÃ»§
+    //    æŸ¥è¯¢æ‰€æœ‰ç”¨æˆ·
     public User getUsers() {
         return userMapper.getUsers();
     }
