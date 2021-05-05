@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class UserController {
@@ -22,11 +23,22 @@ public class UserController {
         return "getAllUser";
     }
 
-    @RequestMapping("/login")
-    public String login(Model model, String username) {
+    @RequestMapping("/verify")
+    @ResponseBody
+    public String login(String username, String pwd) {
+        String Info = "";
         User users = userService.getUserByName(username);
-        Model model1 = model.addAttribute("User", "users");
-        return "forward:/index.jsp";
+        System.out.println(users);
+        if (users != null) {
+            Info = "ok";
+            if (pwd.equals(users.getPassword())) {
+                Info = "true";
+            }
+        } else {
+            Info = "err";
+        }
+        return Info;
+
     }
 
 }
