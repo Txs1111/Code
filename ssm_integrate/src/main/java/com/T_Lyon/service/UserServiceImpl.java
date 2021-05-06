@@ -33,6 +33,11 @@ public class UserServiceImpl implements UserService {
         return userMapper.getUserByName(username);
     }
 
+    //    查询一个用户
+    public User getUserByID(int id) {
+        return userMapper.getUserByID(id);
+    }
+
     //    查询所有用户
     public User getUsers() {
         return userMapper.getUsers();

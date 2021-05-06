@@ -16,6 +16,9 @@ public interface UserService {
     //    查询一个用户
     public User getUserByName(@Param("username") String username);
 
+    //    查询一个用户
+    public User getUserByID(int id);
+
     //    查询所有用户
     public User getUsers();
 

@@ -20,6 +20,10 @@ public interface UserMapper {
     @Select("select * from student_ide.user where username=#{username}")
     public User getUserByName(@Param("username") String username);
 
+    //    查询一个用户
+    @Select("select * from student_ide.user where id=#{id}")
+    public User getUserByID(@Param("id") int id);
+
     //    查询所有用户
     @Select("select * from student_ide.user")
     public User getUsers();
