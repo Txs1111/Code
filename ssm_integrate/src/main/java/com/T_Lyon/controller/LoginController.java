@@ -25,10 +25,9 @@ public class LoginController {
 
     @RequestMapping("/verify")
     @ResponseBody
-    public String verify(String username, String pwd) {
+    public String verify(int id, String pwd) {
         String Info = "";
-        User users = userService.getUserByName(username);
-        System.out.println(users);
+        User users = userService.getUserByID(id);
         if (users != null) {
             Info = "ok";
             if (pwd.equals(users.getPassword())) {
@@ -41,14 +40,14 @@ public class LoginController {
     }
 
     @RequestMapping("/login")
-    public String login(Model model, String username, String pwd) {
-        User userByName = userService.getUserByName(username);
-        System.out.println("userByName:" + userByName);
+    public String login(Model model, int id, String pwd) {
+        User userByID = userService.getUserByID(id);
+        System.out.println("userByName:" + userByID);
 
-        if (userByName != null) {
-            if (pwd.equals(userByName.getPassword())) {
-                System.out.println("pwd.equals(userByName.getPassword())" + pwd.equals(userByName.getPassword()));
-                Model user = model.addAttribute("user", userByName);
+        if (userByID != null) {
+            if (pwd.equals(userByID.getPassword())) {
+                System.out.println("pwd.equals(userByName.getPassword())" + pwd.equals(userByID.getPassword()));
+                Model user = model.addAttribute("user", userByID);
                 return "home";
             } else {
                 Model user = null;
