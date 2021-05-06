@@ -16,7 +16,7 @@
         // 动态验证账号
         $.post({
             url: "${pageContext.request.contextPath}/verify",
-            data: {"username": $("#username").val(), "pwd": $("#pwd").val()},
+            data: {"id": $("#username").val(), "pwd": $("#pwd").val()},
             success: function (data) {
                 if (data == "ok" || data == "true") {
                     $("#userInfo").css("color", "green");
@@ -33,7 +33,7 @@
         // 动态验证密码
         $.post({
             url: "${pageContext.request.contextPath}/verify",
-            data: {"username": $("#username").val(), "pwd": $("#pwd").val()},
+            data: {"id": $("#username").val(), "pwd": $("#pwd").val()},
             success: function (data) {
                 if (data == "true") {
                     $("#pwdInfo").css("color", "green");
@@ -53,7 +53,7 @@
         <%--失去焦点he点击时执行函数--%>
         <form action="${pageContext.request.contextPath}/login" method="get">
             <div>
-                账号：<input type="text" id="username" name="username" onblur="u()" required>
+                账号：<input type="text" id="username" name="id" onblur="u()" required>
                 <span id="userInfo"></span>
             </div>
             <div>
@@ -67,7 +67,7 @@
     </div>
 
     <div>
-        <div><a href="${pageContext.request.contextPath}/WEB-INF/jsp/register.jsp">注册</a></div>
+        <div><a href="${pageContext.request.contextPath}/toRegister">注册</a></div>
     </div>
 </div>
 </body>
