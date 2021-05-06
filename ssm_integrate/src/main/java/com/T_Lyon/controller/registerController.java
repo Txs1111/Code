@@ -16,5 +16,14 @@ public class registerController {
     @Qualifier("UserServiceImpl")
     private UserService userService;
 
-    @RequestMapping("/")
+    @RequestMapping("/toRegister")
+    public String toRegister() {
+        return "register";
+    }
+
+    @RequestMapping("/register")
+    public String register() {
+
+        return "";
+    }
 }
