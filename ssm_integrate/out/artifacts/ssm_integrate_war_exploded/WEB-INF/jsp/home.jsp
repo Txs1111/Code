@@ -11,6 +11,8 @@
     <title>主页</title>
 </head>
 <body>
-<%--${}--%>
+<h1>
+    欢迎来到主页
+</h1>
 </body>
 </html>
