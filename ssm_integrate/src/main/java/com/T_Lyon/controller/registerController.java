@@ -2,6 +2,7 @@ package com.T_Lyon.controller;
 
 import com.T_Lyon.pojo.User;
 import com.T_Lyon.service.UserService;
+import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -34,10 +35,15 @@ public class registerController {
     }
 
     @RequestMapping("/register")
-    public String register(Model model, String username, String pwd, String username2) {
+    public String register(String username, String pwd, String username2, String pwd2) {
 
-        System.out.println(username2 + "username2");
-        if (username2 != null && username2.equals("yes")) {
+        if (username2 == null && username2.equals("no")) {
+            return "redirect:/toRegister";
+        } else if (username == null || pwd == null || pwd2 == null) {
+            return "redirect:/toRegister";
+        } else if (username.indexOf(" ") + pwd.indexOf(" ") + pwd2.indexOf(" ") > 0) {
+            return "redirect:/toRegister";
+        } else {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             Date date = new Date();
             String format = sdf.format(date);
@@ -48,10 +54,15 @@ public class registerController {
             user.setGrade("0");
             user.setRole("0");
             userService.addUser(user);
-            User userByName = userService.getUserByName(username);
-            int account = userByName.getId();
-            model.addAttribute("Account", account);
+            return "redirect:/index.jsp";
         }
-        return "redirect:/index.jsp";
+    }
+
+    @RequestMapping("/register")
+    @ResponseBody
+    public String register(String username, String username2) {
+        User userByName = userService.getUserByName(username);
+        String account = userByName.getId() + "";
+        return account;
     }
 }
