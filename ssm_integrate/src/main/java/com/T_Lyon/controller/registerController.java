@@ -9,6 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 @Controller
 public class registerController {
 
@@ -21,9 +24,34 @@ public class registerController {
         return "register";
     }
 
-    @RequestMapping("/register")
-    public String register() {
+    @RequestMapping("verifyAccount")
+    @ResponseBody
+    public String verifyAccount(String username) {
+        User userByName = userService.getUserByName(username);
+        if (userByName == null)
+            return "yes";
+        else return "no";
+    }
 
-        return "";
+    @RequestMapping("/register")
+    public String register(Model model, String username, String pwd, String username2) {
+
+        System.out.println(username2 + "username2");
+        if (username2 != null && username2.equals("yes")) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date date = new Date();
+            String format = sdf.format(date);
+            User user = new User();
+            user.setUsername(username);
+            user.setPassword(pwd);
+            user.setLogin_time(format);
+            user.setGrade("0");
+            user.setRole("0");
+            userService.addUser(user);
+            User userByName = userService.getUserByName(username);
+            int account = userByName.getId();
+            model.addAttribute("Account", account);
+        }
+        return "redirect:/index.jsp";
     }
 }
