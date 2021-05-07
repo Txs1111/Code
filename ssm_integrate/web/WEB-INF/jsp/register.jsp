@@ -15,8 +15,8 @@
 <script>
     function u() {
         $.post({
-            url: "",
-            data: {"username": $("#username").val(), "pwd": $("#pwd").val(), "pwd2": $("#pwd2").val()},
+            url: "${pageContext.request.contextPath}/verifyAccount",
+            data: {"username": $("#username").val()},
             success: function (data) {
                 $("#usernameInfo").css("color", "red");
                 if ($("#username").val().length > 15) {
@@ -25,10 +25,17 @@
                     $("#usernameInfo").html("字节数不得小于3");
                 } else if ($("#username").val().indexOf(" ") != -1) {
                     $("#usernameInfo").html("密码中不能有空格");
+                } else if (data === "no") {
+                    $("#username2").val("no");
+                    var a = $("#username2").val();
+                    $("#usernameInfo").html("账号已经存在" + a);
                 } else {
                     $("#usernameInfo").css("color", "green");
-                    $("#usernameInfo").html("√");
+                    $("#username2").val("yes");
+                    var a = $("#username2").val();
+                    $("#usernameInfo").html("√" + a);
                 }
+
             }
         })
     }
@@ -36,7 +43,7 @@
     function p() {
         $.post({
             url: "",
-            data: {"username": $("#username").val(), "pwd": $("#pwd").val(), "pwd2": $("#pwd2").val()},
+            data: {"username": $("#username").val()},
             success: function () {
                 $("#passwordInfo").css("color", "red");
                 if ($("#pwd").val().length > 15) {
@@ -56,7 +63,7 @@
     function p2() {
         $.post({
             url: "",
-            data: {"username": $("#username").val(), "pwd": $("#pwd").val(), "pwd2": $("#pwd2").val()},
+            data: {"username": $("#username").val()},
             success: function () {
                 $("#password2Info").css("color", "red");
                 if ($("#pwd2").val().length > 15) {
@@ -80,15 +87,16 @@
 <div>
     <form action="${pageContext.request.contextPath}/register" method="get">
         <div>
-            用户名：<input type="text" name="username" id="username" onblur="u()" required>
+            ${Account}用户名：<input type="text" name="username" id="username" onblur="u()" required>
+            <input type="text" name="username2" id="username2" style="display: none">
             <span id="usernameInfo"></span>
         </div>
         <div>
-            密码：<input type="password" name="" id="pwd" onblur="p()" required>
+            密码：<input type="password" name="pwd" id="pwd" onblur="p()" required>
             <span id="passwordInfo"></span>
         </div>
         <div>
-            确认密码：<input type="password" name="" id="pwd2" onblur="p2()" required>
+            确认密码：<input type="password" name="pwd2" id="pwd2" onblur="p2()" required>
             <span id="password2Info"></span>
         </div>
         <div>
