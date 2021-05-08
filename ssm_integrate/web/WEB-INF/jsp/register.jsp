@@ -13,7 +13,7 @@
 <body>
 <script src="${pageContext.request.contextPath}/static/js/jquery-3.4.1.js"></script>
 <script>
-    var type = "";
+    var type = {"u": "no", "p": "no", "p2": "no"};
 
     function u() {
         $.post({
@@ -21,10 +21,11 @@
             data: {"username": $("#username").val()},
             success: function (data) {
                 $("#usernameInfo").css("color", "red");
+                type = {"u": "no"};
                 if (data === "litter3") {
-                    $("#usernameInfo").html("字节数不得小于3位");
+                    $("#usernameInfo").html("字数不得小于3位");
                 } else if (data === "big15") {
-                    $("#usernameInfo").html("字节数不得超过15位");
+                    $("#usernameInfo").html("字数不得超过15位");
                 } else if (data === "blank") {
                     $("#usernameInfo").html("账号不能为出现空格");
                 } else if (data === "exist") {
@@ -32,8 +33,12 @@
                 } else if (data === "yes") {
                     $("#usernameInfo").css("color", "green");
                     $("#usernameInfo").html("√");
-                    type = "u";
+                    type = {"u": "yes"};
                 }
+                if (type.u == "yes" && type.p == "yes" && type.p2 == "yes") {
+                    $("#result").val("yes");
+                } else $("#result").val("no");
+                console.log(type);
             }
         })
     }
@@ -43,9 +48,10 @@
             url: "",
             success: function () {
                 $("#passwordInfo").css("color", "red");
+                type = {"p": "no"};
                 // 判断长度
                 if ($("#pwd").val().length < 6) {
-                    $("#passwordInfo").html("字节数不得小于6位");
+                    $("#passwordInfo").html("字数不得小于6位");
                 } else {
                     // 判断空格
                     if ($("#pwd").val().indexOf(" ") != -1) {
@@ -53,10 +59,13 @@
                     } else {
                         $("#passwordInfo").css("color", "green");
                         $("#passwordInfo").html("√");
-                        if (type == "u")
-                            type = type + "p";
+                        type = {"p": "yes"};
                     }
                 }
+                if (type.u == "yes" && type.p == "yes" && type.p2 == "yes") {
+                    $("#result").val("yes");
+                } else $("#result").val("no");
+                console.log(type);
             }
         })
     }
@@ -66,10 +75,10 @@
             url: "",
             success: function () {
                 $("#password2Info").css("color", "red");
-
+                type = {"p2": "no"};
                 // 判断长度
                 if ($("#pwd2").val().length < 6) {
-                    $("#password2Info").html("字节数不得小于6位");
+                    $("#password2Info").html("字数不得小于6位");
                 } else {
                     // 判断空格
                     if ($("#pwd2").val().indexOf(" ") != -1) {
@@ -81,13 +90,14 @@
                         } else {
                             $("#password2Info").css("color", "green");
                             $("#password2Info").html("√");
-                            if (type == "up") {
-                                type = type + "p2";
-                                $("#result").val("yes");
-                            } else $("#result").val("no");
+                            type = {"p2": "yes"};
                         }
                     }
                 }
+                if (type.u == "yes" && type.p == "yes" && type.p2 == "yes") {
+                    $("#result").val("yes");
+                } else $("#result").val("no");
+                console.log(type);
             }
         })
     }
@@ -97,11 +107,12 @@
             url: "${pageContext.request.contextPath}/registerSub",
             data: {"username": $("#username").val(), "result": $("#result").val()},
             success: function (data) {
-                if (type == "upp2") {
+                if ($("#result").val()=="yes"&&type.u == "yes" && type.p == "yes" && type.p2 == "yes") {
                     alert("注册成功" + "\n" + data);
                 } else {
                     alert("信息错误！");
                 }
+                console.log(type);
             }
         })
     }
@@ -126,7 +137,7 @@
             验证码
         </div>
         <div>
-            <input type="submit" id="submit" onclick="u(),p(),p2(),s()">
+            <input type="submit" id="submit" onclick="s()">
         </div>
     </form>
 </div>
