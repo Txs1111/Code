@@ -148,7 +148,7 @@
         验证码
     </div>
     <div>
-        <input type="submit" id="submit" onclick="u(),p(),p2(),a(),f()">
+        <input type="submit" id="submit" onclick="a(),f()">
     </div>
 </div>
 </body>
