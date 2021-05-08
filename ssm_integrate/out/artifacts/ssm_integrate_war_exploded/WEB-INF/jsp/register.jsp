@@ -13,29 +13,27 @@
 <body>
 <script src="${pageContext.request.contextPath}/static/js/jquery-3.4.1.js"></script>
 <script>
+    var type = "";
+
     function u() {
         $.post({
-            url: "${pageContext.request.contextPath}/verifyAccount",
+            url: "${pageContext.request.contextPath}/verifyUsername",
             data: {"username": $("#username").val()},
             success: function (data) {
                 $("#usernameInfo").css("color", "red");
-                if ($("#username").val().length > 15) {
-                    $("#usernameInfo").html("字节数不得超过15");
-                } else if ($("#username").val().length < 3) {
-                    $("#usernameInfo").html("字节数不得小于3");
-                } else if ($("#username").val().indexOf(" ") != -1) {
-                    $("#usernameInfo").html("密码中不能有空格");
-                } else if (data === "no") {
-                    $("#username2").val("no");
-                    var a = $("#username2").val();
-                    $("#usernameInfo").html("账号已经存在" + a);
-                } else {
+                if (data === "blank") {
+                    $("#usernameInfo").html("账号不能为出现空格");
+                } else if (data === "big15") {
+                    $("#usernameInfo").html("字节数不得超过15位");
+                } else if (data === "litter3") {
+                    $("#usernameInfo").html("字节数不得小于3位");
+                } else if (data === "exist") {
+                    $("#usernameInfo").html("账号已经存在");
+                } else if (data === "yes") {
                     $("#usernameInfo").css("color", "green");
-                    $("#username2").val("yes");
-                    var a = $("#username2").val();
-                    $("#usernameInfo").html("√" + a);
+                    $("#usernameInfo").html("√");
+                    type = "u";
                 }
-
             }
         })
     }
@@ -43,18 +41,21 @@
     function p() {
         $.post({
             url: "",
-            data: {"username": $("#username").val()},
             success: function () {
                 $("#passwordInfo").css("color", "red");
-                if ($("#pwd").val().length > 15) {
-                    $("#passwordInfo").html("字节数不得超过15");
-                } else if ($("#pwd").val().length < 3) {
-                    $("#passwordInfo").html("字节数不得小于3");
-                } else if ($("#pwd").val().indexOf(" ") != -1) {
+                // 判断空格
+                if ($("#pwd").val().indexOf(" ") != -1) {
                     $("#passwordInfo").html("密码中不能有空格");
                 } else {
-                    $("#passwordInfo").css("color", "green");
-                    $("#passwordInfo").html("√");
+                    // 判断长度
+                    if ($("#pwd").val().length < 6) {
+                        $("#passwordInfo").html("字节数不得小于6位");
+                    } else {
+                        $("#passwordInfo").css("color", "green");
+                        $("#passwordInfo").html("√");
+                        if (type == "u")
+                            type = type + "p";
+                    }
                 }
             }
         })
@@ -63,32 +64,54 @@
     function p2() {
         $.post({
             url: "",
-            data: {"username": $("#username").val()},
             success: function () {
                 $("#password2Info").css("color", "red");
-                if ($("#pwd2").val().length > 15) {
-                    $("#password2Info").html("字节数不得超过15");
-                } else if ($("#pwd2").val().length < 3) {
-                    $("#password2Info").html("字节数不得小于3");
-                } else if ($("#pwd2").val().indexOf(" ") != -1) {
+                $("#result").val("no");
+                // 判断空格
+                if ($("#pwd2").val().indexOf(" ") != -1) {
                     $("#password2Info").html("密码中不能有空格");
-                } else if ($("#pwd").val() != $("#pwd2").val()) {
-                    $("#password2Info").html("两次密码不同");
                 } else {
-                    $("#password2Info").css("color", "green");
-                    $("#password2Info").html("√");
+                    // 判断字数
+                    if ($("#pwd2").val().length < 6) {
+                        $("#password2Info").html("字节数不得小于6位");
+                    } else {
+                        // 判断重复
+                        if ($("#pwd").val() != $("#pwd2").val()) {
+                            $("#password2Info").html("两次密码不同");
+                        } else {
+                            $("#password2Info").css("color", "green");
+                            $("#password2Info").html("√");
+                            if (type == "up") {
+                                type = type + "p2";
+                                $("#result").val("yes");
+                            }
+                        }
+                    }
                 }
             }
         })
     }
 
+    function s() {
+        $.post({
+            url: "${pageContext.request.contextPath}/registerSub",
+            data: {"username": $("#username").val(), "result": $("#result").val()},
+            success: function (data) {
+                if (type == "upp2") {
+                    alert("注册成功" + "\n" + data);
+                } else {
+                    alert("信息错误！");
+                }
+            }
+        })
+    }
 
 </script>
 <div>
     <form action="${pageContext.request.contextPath}/register" method="get">
         <div>
-            ${Account}用户名：<input type="text" name="username" id="username" onblur="u()" required>
-            <input type="text" name="username2" id="username2" style="display: none">
+            用户名：<input type="text" name="username" id="username" onblur="u()" required>
+            <input type="text" name="result" id="result" style="display: none">
             <span id="usernameInfo"></span>
         </div>
         <div>
@@ -96,14 +119,14 @@
             <span id="passwordInfo"></span>
         </div>
         <div>
-            确认密码：<input type="password" name="pwd2" id="pwd2" onblur="p2()" required>
+            确认密码：<input type="password" name="pwd2" id="pwd2" onblur="p(),p2()" required>
             <span id="password2Info"></span>
         </div>
         <div>
             验证码
         </div>
         <div>
-            <input type="submit" id="submit">
+            <input type="submit" id="submit" onclick="u(),p(),p2(),s()">
         </div>
     </form>
 </div>
