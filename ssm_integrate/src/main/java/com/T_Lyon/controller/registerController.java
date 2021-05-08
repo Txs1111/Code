@@ -25,25 +25,38 @@ public class registerController {
         return "register";
     }
 
-    @RequestMapping("verifyAccount")
+    @RequestMapping("verifyUsername")
     @ResponseBody
-    public String verifyAccount(String username) {
+    public String verifyUsername(String username) {
         User userByName = userService.getUserByName(username);
-        if (userByName == null)
-            return "yes";
-        else return "no";
+        //是否为空
+        if (username.indexOf(" ") != -1) {
+//            username有空格就会返回0
+//            System.out.println("1".indexOf(" ") + "11111111111");
+            return "blank";
+        } else {
+            //是否长度达标
+            if (username.length() > 15)
+                return "big15";
+            else if (username.length() < 3)
+                return "litter3";
+            else {
+                //是否重复
+                if (userByName != null)
+                    return "exist";
+                else if (userByName == null)
+                    return "yes";
+                else return "no";
+            }
+        }
     }
 
-    @RequestMapping("/register")
-    public String register(String username, String pwd, String username2, String pwd2) {
 
-        if (username2 == null && username2.equals("no")) {
-            return "redirect:/toRegister";
-        } else if (username == null || pwd == null || pwd2 == null) {
-            return "redirect:/toRegister";
-        } else if (username.indexOf(" ") + pwd.indexOf(" ") + pwd2.indexOf(" ") > 0) {
-            return "redirect:/toRegister";
-        } else {
+    @RequestMapping("/register")
+    public String register(String username, String pwd, String pwd2, String result) {
+        if (result != null && result.equals("yes")) {
+            if (username.indexOf(" ") != 0)
+                System.out.println("result:" + result);
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             Date date = new Date();
             String format = sdf.format(date);
@@ -55,14 +68,18 @@ public class registerController {
             user.setRole("0");
             userService.addUser(user);
             return "redirect:/index.jsp";
-        }
+        } else
+            return "redirect:/toRegister";
     }
 
-    @RequestMapping("/register")
+    @RequestMapping("/registerSub")
     @ResponseBody
-    public String register(String username, String username2) {
-        User userByName = userService.getUserByName(username);
-        String account = userByName.getId() + "";
-        return account;
+    public String registerSub(String username, String result) {
+        if (result.equals("yes")) {
+            User userByName = userService.getUserByName(username);
+            String account = userByName.getId() + "";
+            return account;
+        } else
+            return "exist";
     }
 }
