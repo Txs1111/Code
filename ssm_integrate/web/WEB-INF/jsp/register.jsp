@@ -11,7 +11,6 @@
     <title>注册</title>
 </head>
 <body>
-<script src="${pageContext.request.contextPath}/static/js/jquery-3.4.1.js"></script>
 <script>
     var type = {"u": "no", "p": "no", "p2": "no"};
 
@@ -35,7 +34,6 @@
                     $("#usernameInfo").html("√");
                     type.u = "yes";
                 }
-                console.log(type);
             }
         })
     }
@@ -59,7 +57,8 @@
                         type.p = "yes";
                     }
                 }
-                console.log(type);
+                if ($("#pwd2").val().length > 0)
+                    p2();
             }
         })
     }
@@ -124,25 +123,25 @@
                 } else {
                     alert("信息错误！");
                 }
-                console.log(type);
             }
         })
     }
 
 
 </script>
+<script src="${pageContext.request.contextPath}/static/js/jquery-3.4.1.js"></script>
 <div>
     <div>
-        用户名：<input type="text" name="username" id="username" onblur="u(),a()" required>
+        用户名：<input type="text" name="username" id="username" onblur="u()" required>
         <input type="text" name="result" id="result" style="display: none">
         <span id="usernameInfo"></span>
     </div>
     <div>
-        密码：<input type="password" name="pwd" id="pwd" onblur="p(),a()" required>
+        密码：<input type="password" name="pwd" id="pwd" onblur="p()" required>
         <span id="passwordInfo"></span>
     </div>
     <div>
-        确认密码：<input type="password" name="pwd2" id="pwd2" onblur="p2(),a()" required>
+        确认密码：<input type="password" name="pwd2" id="pwd2" onblur="p2()" required>
         <span id="password2Info"></span>
     </div>
     <div>
