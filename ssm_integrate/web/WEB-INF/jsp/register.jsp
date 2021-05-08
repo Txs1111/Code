@@ -21,7 +21,7 @@
             data: {"username": $("#username").val()},
             success: function (data) {
                 $("#usernameInfo").css("color", "red");
-                type = {"u": "no"};
+                type.u = "no";
                 if (data === "litter3") {
                     $("#usernameInfo").html("字数不得小于3位");
                 } else if (data === "big15") {
@@ -33,11 +33,8 @@
                 } else if (data === "yes") {
                     $("#usernameInfo").css("color", "green");
                     $("#usernameInfo").html("√");
-                    type = {"u": "yes"};
+                    type.u = "yes";
                 }
-                if (type.u == "yes" && type.p == "yes" && type.p2 == "yes") {
-                    $("#result").val("yes");
-                } else $("#result").val("no");
                 console.log(type);
             }
         })
@@ -48,7 +45,7 @@
             url: "",
             success: function () {
                 $("#passwordInfo").css("color", "red");
-                type = {"p": "no"};
+                type.p = "no";
                 // 判断长度
                 if ($("#pwd").val().length < 6) {
                     $("#passwordInfo").html("字数不得小于6位");
@@ -59,12 +56,9 @@
                     } else {
                         $("#passwordInfo").css("color", "green");
                         $("#passwordInfo").html("√");
-                        type = {"p": "yes"};
+                        type.p = "yes";
                     }
                 }
-                if (type.u == "yes" && type.p == "yes" && type.p2 == "yes") {
-                    $("#result").val("yes");
-                } else $("#result").val("no");
                 console.log(type);
             }
         })
@@ -75,7 +69,7 @@
             url: "",
             success: function () {
                 $("#password2Info").css("color", "red");
-                type = {"p2": "no"};
+                type.p2 = "no";
                 // 判断长度
                 if ($("#pwd2").val().length < 6) {
                     $("#password2Info").html("字数不得小于6位");
@@ -90,16 +84,33 @@
                         } else {
                             $("#password2Info").css("color", "green");
                             $("#password2Info").html("√");
-                            type = {"p2": "yes"};
+                            type.p2 = "yes";
                         }
                     }
                 }
-                if (type.u == "yes" && type.p == "yes" && type.p2 == "yes") {
-                    $("#result").val("yes");
-                } else $("#result").val("no");
-                console.log(type);
             }
         })
+    }
+
+    function a() {
+        if (type.u == "yes" && type.p == "yes" && type.p2 == "yes") {
+            $("#result").val("yes");
+        } else $("#result").val("no");
+    }
+
+    function f() {
+        $.post({
+                url: "${pageContext.request.contextPath}/register",
+                data: {
+                    "username": $("#username").val(),
+                    "pwd": $("#pwd").val(),
+                    "pwd2": $("#pwd2").val(),
+                    "result": $("#result").val()
+                }, success: function (data) {
+                    s();
+                }
+            }
+        )
     }
 
     function s() {
@@ -107,8 +118,9 @@
             url: "${pageContext.request.contextPath}/registerSub",
             data: {"username": $("#username").val(), "result": $("#result").val()},
             success: function (data) {
-                if ($("#result").val()=="yes"&&type.u == "yes" && type.p == "yes" && type.p2 == "yes") {
-                    alert("注册成功" + "\n" + data);
+                if ($("#result").val() == "yes") {
+                    alert("注册成功" + "\n" + "您的账号为：" + data);
+                    $(location).attr('href', 'http://localhost:8080');
                 } else {
                     alert("信息错误！");
                 }
@@ -117,29 +129,28 @@
         })
     }
 
+
 </script>
 <div>
-    <form action="${pageContext.request.contextPath}/register" method="get">
-        <div>
-            用户名：<input type="text" name="username" id="username" onblur="u()" required>
-            <input type="text" name="result" id="result" style="display: none">
-            <span id="usernameInfo"></span>
-        </div>
-        <div>
-            密码：<input type="password" name="pwd" id="pwd" onblur="p()" required>
-            <span id="passwordInfo"></span>
-        </div>
-        <div>
-            确认密码：<input type="password" name="pwd2" id="pwd2" onblur="p(),p2()" required>
-            <span id="password2Info"></span>
-        </div>
-        <div>
-            验证码
-        </div>
-        <div>
-            <input type="submit" id="submit" onclick="s()">
-        </div>
-    </form>
+    <div>
+        用户名：<input type="text" name="username" id="username" onblur="u(),a()" required>
+        <input type="text" name="result" id="result" style="display: none">
+        <span id="usernameInfo"></span>
+    </div>
+    <div>
+        密码：<input type="password" name="pwd" id="pwd" onblur="p(),a()" required>
+        <span id="passwordInfo"></span>
+    </div>
+    <div>
+        确认密码：<input type="password" name="pwd2" id="pwd2" onblur="p2(),a()" required>
+        <span id="password2Info"></span>
+    </div>
+    <div>
+        验证码
+    </div>
+    <div>
+        <input type="submit" id="submit" onclick="u(),p(),p2(),a(),f()">
+    </div>
 </div>
 </body>
 </html>
