@@ -1,5 +1,7 @@
 package com.T_Lyon.equals;
 
+import org.junit.Test;
+
 public class equals {
     public equals() {
     }
@@ -9,11 +11,16 @@ public class equals {
 
     }
 
+    @Test
     public static void main(String[] args) {
 
-        //    比较两个对象是否相等
+        //    姣旇緝涓や釜瀵硅薄鏄惁鐩哥瓑
         Integer integer = new Integer(1);
         Integer integer2 = new Integer(1);
+        System.out.println(integer);
+        System.out.println(integer == 1);
+        System.out.println(1 == integer);
+        System.out.println(integer.equals(1));
         System.out.println(integer == integer2);
         System.out.println(integer.byteValue() == integer2.byteValue());
         System.out.println(integer.equals(integer2));
@@ -29,6 +36,10 @@ public class equals {
         System.out.println(A == B);
         System.out.println(A.toString() == B.toString());
         System.out.println(A.equals(B));
+    }
+
+    public void aa() {
+
     }
 
 }
