@@ -46,6 +46,7 @@
         })
     }
 
+
 </script>
 <body>
 <div>
@@ -65,7 +66,6 @@
             </div>
         </form>
     </div>
-
     <div>
         <div><a href="${pageContext.request.contextPath}/toRegister">注册</a></div>
     </div>
