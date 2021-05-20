@@ -16,7 +16,7 @@ public class two {
         m();
         long endTime = System.currentTimeMillis();
         System.out.println("运行时间为：" + (endTime - startTime) + "ms");
-//        System.out.println(result.toString());
+        System.out.println(result.toString());
         System.out.println(x);
     }
 
@@ -65,6 +65,12 @@ public class two {
                     }
                 }
             }
+
+        }
+    }
+    public class Thread extends Object implements Runnable{
+        @Override
+        public void run() {
 
         }
     }
