@@ -34,6 +34,14 @@ public class JDKDynamicProxy implements InvocationHandler {
         return (T) Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(), this);
     }
 
+
+    /**
+     * @param proxy  真实对象(被代理对象)
+     * @param method 真实对象的方法，method.invoke(target, args);直接这样调用就行
+     * @param args   变量，可要可不要
+     * @return
+     * @throws Throwable
+     */
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         System.out.println("Do something before");
