@@ -27,6 +27,7 @@ public class SampleClass {
                 return result;
             }
         });
+        new Enhancer().setSuperclass(SampleClass.class);
         SampleClass sample = (SampleClass) enhancer.create();
         sample.test();
     }
